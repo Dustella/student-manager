@@ -1,0 +1,9 @@
+# CMake build directory
+build/
+
+# CMake install directory
+install/
+
+cmake-build*
+
+.cache
