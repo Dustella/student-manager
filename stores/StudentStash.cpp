@@ -10,10 +10,11 @@
 using namespace std;
 
 StudentStash::StudentStash() {
+    
 
 }
 
-bool StudentStash::add(const Student& student) {
+bool StudentStash::add(const Student &student) {
     stash.push_back(student);
     flushStorage();
     return true;
@@ -31,7 +32,7 @@ bool StudentStash::remove(int id) {
 }
 
 Student StudentStash::get(int id) {
-    for (auto & it : stash) {
+    for (auto &it: stash) {
         if (it.getId() == id) {
             return it;
         }
@@ -39,8 +40,8 @@ Student StudentStash::get(int id) {
     return *new Student(0);
 }
 
-bool StudentStash::update(const Student& student) {
-    for (auto & it : stash) {
+bool StudentStash::update(const Student &student) {
+    for (auto &it: stash) {
         if (it.getId() == student.getId()) {
             it = student;
             return true;
@@ -53,6 +54,7 @@ bool StudentStash::update(const Student& student) {
 vector<Student> StudentStash::getAll() {
     return stash;
 }
+
 
 void StudentStash::loadStorage() {
     ifstream file;
@@ -101,7 +103,7 @@ bool StudentStash::fromRecordLines(std::string lines) {
 
 string StudentStash::toRecordLines() {
     string lines;
-    for (auto & it : stash) {
+    for (auto &it: stash) {
         lines += it.toRecordLine() + "\n";
     }
     return lines;

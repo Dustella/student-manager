@@ -15,7 +15,20 @@ private:
     int studentId ;
 public:
     string toRecordLine();
-    bool fromRecordLine(string line);
+    static Score fromRecordLine(string line);
+
+    static void showHeader();
+    void show() const;
+
+    void fromUserInput();
+
+    void setMark(int mark);
+    void setSection(string section);
+    void setLesson(string lesson);
+    void setStudentId(int studentId);
+
+    int getMark() const;
+    int getStudentId() const;
 };
 
 

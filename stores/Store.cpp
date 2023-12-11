@@ -18,5 +18,6 @@ StudentStash *Store::getStudent() {
     return studentStash;
 }
 
+
 StudentStash* Store::studentStash = nullptr;;
 ScoreStash* Store::scoreStash = nullptr;;
