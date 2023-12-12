@@ -5,10 +5,13 @@
 #ifndef STUDENTMANAGER_SCORE_H
 #define STUDENTMANAGER_SCORE_H
 #include <string>
+#include <vector>
+
 using namespace std;
 
 class Score {
 private:
+    int id;
     int mark;
     string section;
     string lesson;
@@ -17,8 +20,10 @@ public:
     string toRecordLine();
     static Score fromRecordLine(string line);
 
+
     static void showHeader();
-    void show() const;
+    static int maxId;
+    void show() ;
 
     void fromUserInput();
 
@@ -26,9 +31,13 @@ public:
     void setSection(string section);
     void setLesson(string lesson);
     void setStudentId(int studentId);
+    void setId(int id);
+
 
     int getMark() const;
     int getStudentId() const;
+    int getId() const;
+
 };
 
 

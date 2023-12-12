@@ -59,6 +59,7 @@ public:
 
     int getId() const;
 
+    string getBirthplace() const;
 
 
 };

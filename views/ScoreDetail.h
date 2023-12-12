@@ -6,8 +6,28 @@
 #define STUDENTMANAGER_SCOREDETAIL_H
 
 
-class ScoreDetail {
+#include "UI.h"
 
+class ScoreEditView: public UI{
+public:
+    void show() override;
+
+    UI* getNextFrame() override;
+
+};
+
+class ScoreAddView: public UI {
+public:
+    void show() override;
+
+    UI* getNextFrame() override;
+};
+
+class ScoreDeleteView: public UI {
+public:
+    void show() override;
+
+    UI* getNextFrame() override;
 };
 
 

@@ -13,6 +13,8 @@ Application::Application() {
 
     auto studentStore = Store::getStudent();
     studentStore->loadStorage();
+    auto scoresStore = Store::getScore();
+    scoresStore->loadStorage();
     bootstrap();
 }
 

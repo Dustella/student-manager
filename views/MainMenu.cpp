@@ -6,7 +6,9 @@
 #include "UI.h"
 #include "StudentDetail.h"
 #include "../stores/Store.h"
+#include "ScoreDetail.h"
 #include <iostream>
+
 using namespace std;
 
 void MainMenu::show() {
@@ -17,31 +19,26 @@ void MainMenu::show() {
     cout << "4. 退出程序" << endl;
 }
 
-UI* MainMenu::getNextFrame() {
+UI *MainMenu::getNextFrame() {
     int action;
     cin >> action;
     switch (action) {
-        case 1:
-        {
+        case 1: {
             auto studentActionMenu = new StudentActionMenu();
             return studentActionMenu;
         }
-        case 2:
-        {
+        case 2: {
             auto scoreActionMenu = new ScoreActionMenu();
             return scoreActionMenu;
         }
-        case 3:
-        {
+        case 3: {
             auto statisticMenu = new StatisticMenu();
             return statisticMenu;
         }
-        case 4:
-        {
+        case 4: {
             exit(0);
         }
-        default:
-        {
+        default: {
             cout << "Invalid action" << endl;
             return this;
         }
@@ -53,43 +50,30 @@ void StudentActionMenu::show() {
     cout << "====学生操作====" << endl;
     auto studentStore = Store::getStudent();
 
-    auto allInfo =  studentStore->getAll();
+    auto allInfo = studentStore->getAll();
     Student::showHeader();
-    for (const auto& item: allInfo) {
+    for (const auto &item: allInfo) {
         item.show();
     }
-    cout << "1. 添加学生   " ;
-    cout << "2. 删除学生   " ;
-    cout << "3. 修改学生   " ;
+    cout << "1. 添加学生   ";
+    cout << "2. 删除学生   ";
+    cout << "3. 修改学生   ";
     cout << "4. 返回上一级" << endl;
 }
 
-UI* StudentActionMenu::getNextFrame() {
-int action;
+UI *StudentActionMenu::getNextFrame() {
+    int action;
     cin >> action;
     switch (action) {
         case 1:
-        {
-            auto studentAddView = new StudentAddView();
-            return studentAddView;
-        }
+            return new StudentAddView();
         case 2:
-        {
-            auto studentDeleteView = new StudentDeleteView();
-            return studentDeleteView;
-        }
+            return new StudentDeleteView();
         case 3:
-        {
-            auto studentModifyView = new StudentEditView();
-            return studentModifyView;
-        }
+            return new StudentEditView();
         case 4:
-        {
-            auto mainMenu = new MainMenu();
-            return mainMenu;
-        }
-        default:
-        {
+            return new MainMenu();
+        default: {
             cout << "Invalid action" << endl;
             return this;
         }
@@ -97,6 +81,13 @@ int action;
 }
 
 void ScoreActionMenu::show() {
+    cout << "成绩操作" << endl;
+    auto scoreStore = Store::getScore();
+    auto allItems = scoreStore->getAll();
+    for (auto item: allItems) {
+        item.show();
+    }
+
     cout << "Score Action Menu" << endl;
     cout << "1. 添加成绩" << endl;
     cout << "2. 删除成绩" << endl;
@@ -104,16 +95,20 @@ void ScoreActionMenu::show() {
     cout << "4. 返回上一级" << endl;
 }
 
-UI* ScoreActionMenu::getNextFrame() {
+UI *ScoreActionMenu::getNextFrame() {
     int action;
     cin >> action;
     switch (action) {
-
+        case 1:
+            return new ScoreAddView();
+        case 2:
+            return new ScoreDeleteView();
+        case 3:
+            return new ScoreEditView();
+        case 4:
+            return new MainMenu();
         default:
-        {
-            cout << "Invalid action" << endl;
             return this;
-        }
     }
 }
 
@@ -125,13 +120,12 @@ void StatisticMenu::show() {
     cout << "4. 返回上一级" << endl;
 }
 
-UI* StatisticMenu::getNextFrame() {
+UI *StatisticMenu::getNextFrame() {
     int action;
     cin >> action;
     switch (action) {
 
-        default:
-        {
+        default: {
             cout << "Invalid action" << endl;
             return this;
         }

@@ -10,7 +10,7 @@
 using namespace std;
 
 StudentStash::StudentStash() {
-    
+
 
 }
 
@@ -60,8 +60,11 @@ void StudentStash::loadStorage() {
     ifstream file;
     file.open("students.csv");
     if (!file) {
-        cout << "Unable to open file students.csv";
-        exit(1); // terminate with error
+//        create a file students.csv
+        ofstream newFile;
+        newFile.open("students.csv");
+        newFile.close();
+        file.open("students.csv");
     }
     string line;
     string fileString;
@@ -110,3 +113,17 @@ string StudentStash::toRecordLines() {
 }
 
 StudentStash::~StudentStash() = default;
+
+
+map<string, vector<Student>> StudentStash::getBirthplaceMapping() {
+
+    map<string, vector<Student>> result;
+
+    for (auto item: stash) {
+        string birth = item.getBirthplace();
+        result[birth].push_back(item);
+    }
+
+    return result;
+
+}

@@ -70,7 +70,7 @@ void StudentDeleteView::show() {
     auto stu = studentStore->get(id);
     if (stu.getId() == 0) {
         cout << "未找到学生信息" << endl;
-        cout << "按任意键返回" << endl;
+        cout << "输入任意内容返回" << endl;
         string dummy;
         cin >> dummy;
         return;

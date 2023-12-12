@@ -158,3 +158,7 @@ Student Student::setBirthplace(string birthplace) {
 int Student::getId() const {
     return id;
 }
+
+string Student::getBirthplace() const {
+    return birthplace;
+}

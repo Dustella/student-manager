@@ -5,6 +5,7 @@
 #ifndef STUDENTMANAGER_STUDENTSTASH_H
 #define STUDENTMANAGER_STUDENTSTASH_H
 #include <vector>
+#include <map>
 #include "../models/Student.h"
 
 class StudentStash {
@@ -22,6 +23,8 @@ public:
     bool fromRecordLines(string lines);
     void flushStorage();
     void loadStorage();
+
+    map<string,vector<Student>> getBirthplaceMapping();
 
 };
 
