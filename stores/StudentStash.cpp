@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "StudentStash.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -114,16 +115,51 @@ string StudentStash::toRecordLines() {
 
 StudentStash::~StudentStash() = default;
 
-
 map<string, vector<Student>> StudentStash::getBirthplaceMapping() {
-
     map<string, vector<Student>> result;
-
     for (auto item: stash) {
         string birth = item.getBirthplace();
         result[birth].push_back(item);
     }
-
     return result;
+}
 
+map<string, int> StudentStash::getSchoolCountMapping() {
+    map<string, int> result;
+    for (auto item: stash) {
+        string school = item.getSchool();
+        result[school]++;
+    }
+    return result;
+}
+
+map<string, int> StudentStash::getClassCountMapping() {
+    map<string, int> result;
+    for (auto item: stash) {
+        string className = item.getClassName();
+        result[className]++;
+    }
+    return result;
+}
+
+vector<Student> StudentStash::getAllSortedById() {
+    vector<Student> result = stash;
+    sort(result.begin(), result.end(), [](Student a, Student b) {
+        return a.getId() < b.getId();
+    });
+    return result;
+}
+
+vector<Student> StudentStash::getAllSortedByScores(map<int, float> averageMapping) {
+    vector<Student> result = stash;
+    sort(result.begin(), result.end(), [averageMapping](Student a, Student b) {
+        int aId = a.getId();
+        int bId = b.getId();
+        float aAverage = averageMapping.find(aId) == averageMapping.end()
+                         ? 0 : averageMapping.find(aId)->second;
+        float bAverage = averageMapping.find(bId) == averageMapping.end()
+                         ? 0 : averageMapping.find(bId)->second;
+        return aAverage > bAverage;
+    });
+    return result;
 }

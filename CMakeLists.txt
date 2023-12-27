@@ -24,6 +24,9 @@ add_executable(main main.cpp
         views/StudentDetail.h
         Application.cpp
         Application.h
+        views/StatisticsDetail.cpp
+        views/StatisticsDetail.h
+        views/StatisticsDetail.h
 )
 if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
     # Git auto-ignore out-of-source build directory

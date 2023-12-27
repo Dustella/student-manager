@@ -17,7 +17,13 @@ public:
     bool add(const Student& student);
     bool remove(int id);
     Student get(int id);
+
+
     vector<Student> getAll();
+    vector<Student> getAllSortedById();
+    vector<Student> getAllSortedByScores(map<int,float> averageMapping);
+
+
     bool update(const Student& student);
     string toRecordLines();
     bool fromRecordLines(string lines);
@@ -25,6 +31,9 @@ public:
     void loadStorage();
 
     map<string,vector<Student>> getBirthplaceMapping();
+    map<string,int> getSchoolCountMapping();
+    map<string,int> getClassCountMapping();
+
 
 };
 

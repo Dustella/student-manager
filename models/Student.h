@@ -61,6 +61,10 @@ public:
 
     string getBirthplace() const;
 
+    string getSchool() const;
+
+    string getClassName() const;
+
 
 };
 

@@ -162,3 +162,11 @@ int Student::getId() const {
 string Student::getBirthplace() const {
     return birthplace;
 }
+
+string Student::getSchool() const {
+    return school;
+}
+
+string Student::getClassName() const {
+    return className;
+}
